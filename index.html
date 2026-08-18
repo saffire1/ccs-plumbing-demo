@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCS Plumbing - Sheffield | Professional Plumbing Services</title>
+  <meta name="description" content="CCS Plumbing in Sheffield. 5.0 stars, 100% recommended. Professional plumbing services, leak detection, pipework, and emergency call-outs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables & Reset */
+    :root {
+      --primary: #0F3049;
+      --accent: #B87333;
+      --accent-dark: #9e6129;
+      --bg-offwhite: #F7F5F1;
+      --text-ink: #10202B;
+      --light-blue-grey: #E4EBEF;
+      
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Work Sans', sans-serif;
+      
+      --radius-card: 20px;
+      --radius-pill: 999px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-offwhite);
+      color: var(--text-ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* Utilities */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 40px);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-weight: 500;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-dark);
+      box-shadow: 0 4px 12px rgba(184, 115, 51, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:hover {
+      background-color: var(--light-blue-grey);
+    }
+
+    /* Animation Classes */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+      }
+      .btn:hover {
+        transform: none;
+      }
+    }
+
+    /* 1. Header */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(247, 245, 241, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(15, 48, 73, 0.1);
+      padding: 16px 0;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text-ink);
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    /* 2. Hero Section */
+    .hero {
+      padding: clamp(60px, 8vw, 100px) 0;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 24px;
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: #4A5A66;
+      margin-bottom: 32px;
+      max-width: 65ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+    }
+
+    .hero-image {
+      border-radius: var(--radius-card);
+      box-shadow: 0 20px 40px rgba(15, 48, 73, 0.1);
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      width: 100%;
+    }
+
+    .stat-card {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-card-stars {
+      color: var(--accent);
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+    }
+    
+    .stat-card-text {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* 3. Visual Divider */
+    .divider {
+      width: 100%;
+      height: 60px;
+      color: var(--primary);
+      display: block;
+    }
+    .divider svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* 4. Services Section */
+    .services {
+      background-color: var(--primary);
+      color: #fff;
+      padding: clamp(80px, 12vw, 120px) 0;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    .services h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px 32px;
+      border-radius: var(--radius-card);
+      transition: background-color 0.3s ease;
+    }
+
+    .service-card:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(184, 115, 51, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    /* 5. Why Choose Us Section */
+    .why-us {
+      padding: clamp(80px, 12vw, 120px) 0;
+      background-color: var(--bg-offwhite);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 8vw, 80px);
+      align-items: center;
+    }
+
+    .why-image {
+      border-radius: var(--radius-card);
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(15, 48, 73, 0.08);
+    }
+
+    .why-content h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: 24px;
+      color: var(--primary);
+    }
+
+    .why-content > p {
+      font-size: 1.125rem;
+      margin-bottom: 32px;
+      color: #4A5A66;
+      max-width: 65ch;
+    }
+
+    .reasons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .reason-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      fill: var(--accent);
+      margin-top: 2px;
+    }
+
+    .reason-item h4 {
+      font-size: 1.125rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    
+    .reason-item p {
+      font-size: 0.95rem;
+      color: #4A5A66;
+    }
+
+    /* 5.5 Gallery Section */
+    .gallery {
+      padding: clamp(80px, 12vw, 120px) 0;
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .gallery h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: 16px;
+    }
+
+    .gallery-header p {
+      opacity: 0.8;
+      font-size: 1.125rem;
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-auto-rows: 250px;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 250px;
+      }
+      .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .gallery-item.large-horizontal {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    /* 6. Reviews Section */
+    .reviews {
+      padding: clamp(80px, 12vw, 120px) 0;
+      background-color: var(--light-blue-grey);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .reviews h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    
+    .reviews-subtitle {
+      color: #4A5A66;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .review-card {
+      background-color: #fff;
+      padding: 40px 32px;
+      border-radius: var(--radius-card);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    }
+
+    .review-stars {
+      color: var(--accent);
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-ink);
+      margin-bottom: 24px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--light-blue-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    .author-info strong {
+      display: block;
+      color: var(--primary);
+    }
+    
+    .author-info span {
+      font-size: 0.875rem;
+      color: #4A5A66;
+    }
+
+    /* 6.5 FAQ Section */
+    .faq {
+      padding: clamp(80px, 12vw, 120px) 0;
+      background-color: var(--bg-offwhite);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .faq h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .accordion {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .accordion-item {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      overflow: hidden;
+      border: 1px solid var(--light-blue-grey);
+    }
+
+    .accordion-button {
+      width: 100%;
+      text-align: left;
+      padding: 24px;
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion-button:hover {
+      background-color: var(--light-blue-grey);
+    }
+
+    .accordion-button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: -3px;
+    }
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease-out, padding 0.3s ease-out;
+      padding: 0 24px;
+    }
+
+    .accordion-item.active .accordion-content {
+      grid-template-rows: 1fr;
+      padding: 0 24px 24px 24px;
+    }
+
+    .accordion-inner {
+      overflow: hidden;
+    }
+
+    .accordion-inner p {
+      color: #4A5A66;
+      margin: 0;
+    }
+
+    /* 7. Contact Section */
+    .contact {
+      padding: clamp(80px, 12vw, 120px) 0;
+      background-color: var(--bg-offwhite);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 8vw, 80px);
+      background-color: #fff;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(15, 48, 73, 0.05);
+    }
+
+    .contact-info {
+      background-color: var(--primary);
+      color: #fff;
+      padding: 64px 48px;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-info p {
+      opacity: 0.9;
+      margin-bottom: 48px;
+      max-width: 60ch;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-item svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a, .contact-item span {
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    .contact-form-wrapper {
+      padding: 64px 48px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--light-blue-grey);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background-color: var(--bg-offwhite);
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: #fff;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text-ink);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-logo svg {
+      fill: var(--accent);
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366; /* Standard WhatsApp Green */
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-4px) scale(1.05);
+      background-color: #20BA56;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-whatsapp svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        right: 16px;
+      }
+      .floating-whatsapp svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .hero-grid, .why-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      
+      .stat-card {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .contact-info, .contact-form-wrapper {
+        padding: 40px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(247, 245, 241, 0.98);
+        padding: 24px;
+        border-bottom: 1px solid rgba(15, 48, 73, 0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      .header-cta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8a8 8 0 0 0 16 0c0-3.32-2.67-7.25-8-11.8zm0 18a6 6 0 0 1-6-6c0-2.4 2-5.46 6-9.1 4 3.64 6 6.7 6 9.1a6 6 0 0 1-6 6zm-2-6.5a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>
+        CCS Plumbing
+      </a>
+      
+      <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary" style="padding: 10px 24px;">Call Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content fade-up">
+        <span class="eyebrow">Sheffield · 24/7 Emergency Response</span>
+        <h1>Professional, reliable plumbing services in Sheffield.</h1>
+        <p class="hero-subtitle">Trusted by Sheffield property owners with a 5.0★ rating across 49 reviews. From emergency leak detection to comprehensive pipework and maintenance, we deliver exceptional workmanship and transparent pricing.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">WhatsApp Us</a>
+          <a href="tel:+447356026677" class="btn btn-secondary">Call +44 7356 026677</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper fade-up">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" alt="Professional plumber fixing bathroom pipes" class="hero-image">
+        <div class="stat-card">
+          <div class="stat-card-stars">★★★★★</div>
+          <div class="stat-card-text">5.0 Rating — 49 Google Reviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Divider (Wave) -->
+  <div class="divider" style="background-color: var(--bg-offwhite);">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#0F3049"></path>
+    </svg>
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="services-header fade-up">
+        <h2>Expert plumbing, executed with precision.</h2>
+        <p style="opacity: 0.8; font-size: 1.125rem;">We provide comprehensive domestic plumbing services across South Yorkshire. Fully insured, highly skilled, and transparently priced.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6.003 6.003 0 1 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          </div>
+          <h3>General Plumbing & Maintenance</h3>
+          <p>Comprehensive maintenance, routine repairs, tap replacements, and resolution of domestic plumbing blockages.</p>
+        </div>
+        
+        <div class="service-card fade-up" style="transition-delay: 100ms;">
+          <div class="service-icon">
+             <svg viewBox="0 0 24 24"><path d="M3 6h18M7 6v14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6M8 2h8"/></svg>
+          </div>
+          <h3>System Installations</h3>
+          <p>Professional installation, rerouting, and upgrading of domestic copper and plastic pipework, including radiators.</p>
+        </div>
+        
+        <div class="service-card fade-up" style="transition-delay: 200ms;">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Advanced Leak Detection</h3>
+          <p>Rapid identification and resolution of hidden leaks to mitigate structural water damage and restore system integrity.</p>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay: 300ms;">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>24/7 Emergency Response</h3>
+          <p>Round-the-clock availability for urgent plumbing failures, burst pipes, and critical leaks requiring immediate intervention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why-us" class="why-us">
+    <div class="container why-grid">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mechanical_room.jpg/960px-Mechanical_room.jpg" alt="Professional complex pipework setup" class="why-image fade-up">
+      
+      <div class="why-content fade-up">
+        <h2>Why Sheffield Trusts CCS Plumbing</h2>
+        <p>Securing a dependable plumbing contractor is essential. We are committed to technical excellence, transparent communication, and maintaining the highest standards of safety on every site.</p>
+        
+        <div class="reasons-list">
+          <div class="reason-item">
+            <svg class="reason-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <h4>Transparent Estimates</h4>
+              <p>Comprehensive, no-obligation quotations provided prior to the commencement of any plumbing work.</p>
+            </div>
+          </div>
+          
+          <div class="reason-item">
+            <svg class="reason-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <h4>24/7 Emergency Availability</h4>
+              <p>Dedicated rapid-response services for critical plumbing emergencies outside of standard operating hours.</p>
+            </div>
+          </div>
+          
+          <div class="reason-item">
+            <svg class="reason-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <h4>Fully Insured & Certified</h4>
+              <p>Complete peace of mind with comprehensive public liability insurance and strict adherence to industry regulations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="gallery-header fade-up">
+        <h2>Our Professional Portfolio</h2>
+        <p>Review examples of our recent plumbing installations, pipework diagnostics, and repair operations across Sheffield.</p>
+      </div>
+      <div class="gallery-grid fade-up">
+        <div class="gallery-item large">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Propane_torch_soldering_copper_pipe.jpg/960px-Propane_torch_soldering_copper_pipe.jpg" alt="Soldering a copper pipe joint" class="gallery-img" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Plumber_at_work.jpg/960px-Plumber_at_work.jpg" alt="Plumber actively working on pipes" class="gallery-img" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Ridgid_10%22_pipe_wrench.jpg/960px-Ridgid_10%22_pipe_wrench.jpg" alt="Professional pipe wrench tool" class="gallery-img" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Boiler_and_Cylinder.jpg/960px-Boiler_and_Cylinder.jpg" alt="Boiler and hot water cylinder installation" class="gallery-img" loading="lazy">
+        </div>
+        <div class="gallery-item large-horizontal">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Mechanical_room.jpg/960px-Mechanical_room.jpg" alt="Complex pipework in a mechanical room" class="gallery-img" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <div class="reviews-header fade-up">
+        <h2>100% Recommended</h2>
+        <p class="reviews-subtitle">Based on 17 Facebook recommendations and 49 Google Reviews.</p>
+      </div>
+      
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"CCS Plumbing provided outstanding service. We experienced a burst pipe late on a Friday; the technician arrived within 45 minutes, isolated the supply, and executed a flawless repair. Highly professional."</p>
+          <div class="review-author">
+            <div class="avatar">M</div>
+            <div class="author-info">
+              <strong>Mark T.</strong>
+              <span>Sheffield</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="review-card fade-up" style="transition-delay: 100ms;">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"An exceptionally reliable plumbing service. They replaced several aging radiators and upgraded our main water valves. The work was meticulous, the site was kept spotless, and communication was faultless throughout."</p>
+          <div class="review-author">
+            <div class="avatar">S</div>
+            <div class="author-info">
+              <strong>Sarah H.</strong>
+              <span>Rotherham</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="review-card fade-up" style="transition-delay: 200ms;">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"A highly professional contractor. They diagnosed a complex pressure issue and installed a new shower mixer with precision. The technician was courteous, efficient, and the pricing was entirely transparent."</p>
+          <div class="review-author">
+            <div class="avatar">D</div>
+            <div class="author-info">
+              <strong>David W.</strong>
+              <span>Sheffield</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="faq-header fade-up">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      
+      <div class="accordion fade-up">
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            What areas do you cover?
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p>We are based in Sheffield and cover all surrounding areas in South Yorkshire, including Rotherham, Barnsley, and Chesterfield.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Are you fully insured and vetted?
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p>Yes, we hold comprehensive public liability insurance and are fully DBS-checked, ensuring complete peace of mind when we work in your home.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            What are your booking lead times?
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p>For emergency call-outs, we aim to be on-site within the hour. For standard plumbing installations and maintenance, we typically schedule visits within 1-3 working days.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button" aria-expanded="false">
+            Do you charge a call-out fee?
+            <svg class="accordion-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <p>We provide transparent, upfront pricing. Emergency out-of-hours visits do carry a standard call-out rate, but we will always confirm this with you over the phone before dispatching a plumber.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid fade-up">
+        <div class="contact-info">
+          <h2>Request a Consultation</h2>
+          <p>Require urgent plumbing assistance or planning a system upgrade? Contact us via phone, email, or the inquiry form to schedule a professional consultation.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div>
+                <h4>Call or WhatsApp</h4>
+                <a href="tel:+447356026677">+44 7356 026677</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:ccsplumbing.craig@gmail.com">ccsplumbing.craig@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <h4>Coverage</h4>
+                <a href="https://maps.app.goo.gl/UVzWbrooHHYGuRv87" target="_blank" rel="noopener noreferrer">Sheffield, South Yorkshire, UK</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="map-wrapper" style="margin-top: 48px; border-radius: 12px; overflow: hidden; height: 250px; background-color: rgba(255, 255, 255, 0.1);">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d152285.341142517!2d-1.637012678668705!3d53.395726210080614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790aa9fae8be15%3A0x3e2827f5af06b078!2sSheffield!5e0!3m2!1sen!2suk!4v1708000000000!5m2!1sen!2suk" 
+              width="100%" 
+              height="100%" 
+              style="border:0; display: block;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper">
+          <form onsubmit="event.preventDefault(); alert('Form submitted! In a real environment, this would send an email to ccsplumbing.craig@gmail.com');">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" required placeholder="John Smith">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" required placeholder="07123 456789">
+            </div>
+            <div class="form-group">
+              <label for="service" class="form-label">How can we help?</label>
+              <select id="service" class="form-control" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="emergency">Emergency Call-Out</option>
+                <option value="general">General Plumbing / Leak</option>
+                <option value="installation">Pipework / System Installation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Additional Details</label>
+              <textarea id="message" class="form-control" placeholder="Briefly describe what you need..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8a8 8 0 0 0 16 0c0-3.32-2.67-7.25-8-11.8zm0 18a6 6 0 0 1-6-6c0-2.4 2-5.46 6-9.1 4 3.64 6 6.7 6 9.1a6 6 0 0 1-6 6zm-2-6.5a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>
+        CCS Plumbing
+      </div>
+      <p>&copy; 2026 CCS Plumbing, Sheffield. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/447356026677" class="floating-whatsapp" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+    
+    // Close mobile menu on link click
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+      });
+    });
+
+    // Accordion Toggle
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.accordion-item');
+        const isActive = item.classList.contains('active');
+        
+        // Close all other accordions
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-button').setAttribute('aria-expanded', 'false');
+        });
+        
+        // Open clicked one if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedElements = document.querySelectorAll('.fade-up');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Run once per element
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+      
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
